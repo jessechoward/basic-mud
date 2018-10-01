@@ -1,0 +1,25 @@
+{
+    "extends": "google",
+    "env":
+    {
+        "es6": true,
+        "node": true,
+        "browser": false,
+        "mocha": true
+    },
+    "parserOptions":
+    {
+        "sourceType": "module"
+    },
+    "rules":
+    {
+        "no-tabs": "off",
+        "comma-dangle": "off",
+        "brace-style": ["error", "allman", {"allowSingleLine": true}],
+        "require-jsdoc": "off",
+        "max-len": ["warn", 120],
+        "space-before-blocks": "off",
+        "indent": "off",
+        "valid-jsdoc": "off"
+    }
+}

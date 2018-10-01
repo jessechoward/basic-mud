@@ -1,0 +1,52 @@
+doctype html
+html.no-js(lang="")
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="x-ua-compatible" content="ie=edge")
+		title #{title}
+		meta(name="description" content="")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+		link(rel="stylesheet", href="/static/css/theme.css")
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+	body
+		//
+			[if lt IE 8]>
+			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+			<![endif]
+		// Add your site or application content here
+		nav.navbar.navbar-inverse
+			.container-fluid
+				.navbar-header
+					a.navbar-brand(href="#") #{appName}
+				ul#main-navbar.nav.navbar-nav
+					li.active
+						a(data-toggle="tab" href="#home") Home
+					li
+						a(data-toggle="tab" href="#login") Login
+					li
+						a(data-toggle="tab" href="#register") Register
+					li
+						a(data-toggle="tab" href="#console") Console
+					li
+						a(data-toggle="tab" href="#player") Player
+					li
+						a(data-toggle="tab" href="#editor") Editor
+
+		#content-wrapper.container-fluid
+			.tab-content
+				#home.tab-pane.fade.active
+					p home content
+				#login.tab-pane.fade
+					p login content
+				#register.tab-pane.fade
+					p register content
+				#console.tab-pane.fade
+					include console.pug
+				#player.tab-pane.fade
+					p player content
+				#editor.tab-pane.fade
+					p editor content
+
+		script(src="/static/js/main.js" type="module")

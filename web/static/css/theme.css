@@ -1,0 +1,41 @@
+#content-wrapper {
+	margin: 2px;
+	border: 1px solid black;
+	padding: 4px;
+}
+
+#console-output {
+	margin: 2px;
+	border: 1px solid black;
+	border-radius: 7px;
+	margin: 4px;
+	background-color: black;
+	color: gray;
+	height: 500px;
+	overflow-x: none;
+	overflow-y: auto;
+}
+
+#console-input {
+	margin: 2px;
+	border: 1px solid black;
+	border-radius: 7px;
+	margin: 4px;
+	background-color: black;
+}
+
+#user-input {
+	margin: 2px;
+	border: none;
+	padding: 4px;
+	width: 100%;
+	background-color: black;
+	color: gray;
+	outline: none;
+	box-shadow: none;
+}
+
+#user-input:focus {
+	outline: none;
+	box-shadow: none;
+}

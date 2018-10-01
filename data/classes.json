@@ -1,0 +1,62 @@
+[
+	{
+		"name": "barbarian",
+		"attributes": [{"constitution": 2}],
+		"traits": [],
+		"skills": [],
+		"spells": [],
+		"proficiencies": [],
+		"languages": [],
+		"playable": true	
+	},
+	{
+		"name": "warrior",
+		"attributes": [{"constitution": 1}, {"strength": 1}],
+		"traits": [],
+		"skills": [],
+		"spells": [],
+		"proficiencies": [],
+		"languages": [],
+		"playable": true	
+	},
+	{
+		"name": "cleric",
+		"attributes": [{"wisdom": 2}],
+		"traits": [],
+		"skills": [],
+		"spells": [],
+		"proficiencies": [],
+		"languages": [],
+		"playable": true	
+	},
+	{
+		"name": "rogue",
+		"attributes": [{"dexterity": 2}],
+		"traits": [],
+		"skills": [],
+		"spells": [],
+		"proficiencies": [],
+		"languages": [],
+		"playable": true	
+	},
+	{
+		"name": "mage",
+		"attributes": [{"intelligence": 2}],
+		"traits": [],
+		"skills": [],
+		"spells": [],
+		"proficiencies": [],
+		"languages": [],
+		"playable": true	
+	},
+	{
+		"name": "paladin",
+		"attributes": [{"strngth": 1}, {"wisdom": 1}],
+		"traits": [],
+		"skills": [],
+		"spells": [],
+		"proficiencies": [],
+		"languages": [],
+		"playable": true	
+	}
+]
