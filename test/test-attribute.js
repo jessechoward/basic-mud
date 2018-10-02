@@ -1,6 +1,6 @@
 const test = require('tape');
-const dice = require('../src/dice');
-const Attribute = require('../src/attribute');
+const dice = require('../mud/dice');
+const Attribute = require('../mud/attribute');
 
 const attributeNames = ['strength', 'intelligence', 'dexterity', 'wisdom', 'constitution', 'charisma'];
 
