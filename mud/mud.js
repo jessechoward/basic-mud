@@ -18,19 +18,36 @@ class Mud extends EventEmitter
 			const query = querystring.parse(url.parse(request.url).query);
 
 			console.log('New connection: ', query);
-			sock.send('Connected');
 
 			// todo: add logic to validate and load player from jwt in query string
-			const player = new Player({name: 'new player'}, sock);
-			this._addPlayer(player);
+			const player = new Player({name: query.name}, sock);
+			this.addPlayer(player);
 		});
 	}
 
-	_addPlayer(player)
+	close(message, code)
+	{
+		console.log('Exiting: ', message);
+	}
+
+	get players(){return this._players;}
+
+	addPlayer(player)
 	{
 		this._players.add(player);
+		player.on('closed', this.removePlayer.bind(this));
+		player.on('command', this.handleInput.bind(this));
+	}
+
+	removePlayer(player)
+	{
+		this._players.delete(player);
+	}
+
+	handleInput(player, data)
+	{
+		
 	}
 };
 
 module.exports = Mud;
-

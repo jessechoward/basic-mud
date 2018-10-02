@@ -1,6 +1,7 @@
+const EventEmitter = require('events').EventEmitter;
 // const Character = require('./character');
 
-class Player // extends Character
+class Player extends EventEmitter// extends Character
 {
 	constructor(data, ws)
 	{
@@ -9,10 +10,16 @@ class Player // extends Character
 		ws.on('error', this.errorHandler.bind(this));
 		ws.on('close', this.closeHandler.bind(this));
 		this._ws = ws;
+		this._name = data.name;
 	}
+
+	get name(){return this._name;}
+	get connected(){return this._ws ? true : false;}
 
 	pushCommand(data)
 	{
+		if (!this.connected) return;
+
 		/* try
 		{
 			const cmd = JSON.parse(data);
@@ -22,7 +29,15 @@ class Player // extends Character
 		{
 			console.log('Error parsing command form JSON: ', error);
 		} */
-		this._ws.send(`Received: ${data}`);
+		this.writeToCharacter(`Received: ${data}`);
+		this.emit('command', this, data);
+	}
+
+	writeToCharacter(data)
+	{
+		if (!this.connected) return;
+
+		this._ws.send(data);
 	}
 
 	errorHandler(error)
@@ -32,7 +47,8 @@ class Player // extends Character
 
 	closeHandler()
 	{
-		console.log(`Player ${this.name} disconneted`);
+		console.log(`Player ${this.name} disconnected`);
+		this.emit('closed', this);
 	}
 };
 
