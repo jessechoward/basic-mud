@@ -30,7 +30,14 @@ class Player extends EventEmitter// extends Character
 			console.log('Error parsing command form JSON: ', error);
 		} */
 		this.writeToCharacter(`Received: ${data}`);
-		this.emit('command', this, data);
+		try
+		{
+			this.emit('command', this, JSON.parse(data));
+		}
+		catch(error)
+		{
+			console.log('[ERROR] received non-JSON string from player: ', this.name);
+		}
 	}
 
 	writeToCharacter(data)

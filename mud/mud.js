@@ -4,6 +4,7 @@ const url = require('url');
 const querystring = require('querystring');
 // const jwt = require('jsonwebtoken');
 const Player = require('./player');
+const commands = require('./commands');
 
 class Mud extends EventEmitter
 {
@@ -46,7 +47,25 @@ class Mud extends EventEmitter
 
 	handleInput(player, data)
 	{
-		
+		if (!data || !data.type || data.type != 'command')
+		{
+			console.log('Client sent something unexpected: ', data);
+			return;
+		}
+
+		// reset idle
+		player.idle = Date.now();
+		// execute the command
+		commands.execute(this, player, data.command, data.args)
+		.then(() =>
+		{
+			// successful command
+			
+		})
+		.catch((message) =>
+		{
+			player.writeToCharacter(message);
+		});
 	}
 };
 
