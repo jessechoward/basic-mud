@@ -1,11 +1,14 @@
 const fs = require('fs');
 const path = require('path');
+const EnumValue = require('../enum');
+const FlagValue = require('../flags');
+const constants = require('../constants');
 // the file we write our command table to
 const commandFile = '../../data/commands.json';
 
 const commands = {};
 
-const loadCommand = (name, minPos='POS_DEAD', minLevel=0, logLevel='normal', enabled=true) =>
+const loadCommand = (name, minPos='dead', minLevel=0, logLevel='normal', enabled=true) =>
 {
 	if (!name || name === '')
 	{
@@ -54,11 +57,11 @@ const loadCommand = (name, minPos='POS_DEAD', minLevel=0, logLevel='normal', ena
 
 const defaultCommandTable =
 {
-	'say':			{minPos: 'POS_RESTING',	minLevel: 0,	logLevel: 'normal',		enabled: true},
-	'tell':			{minPos: 'POS_RESTING',	minLevel: 0,	logLevel: 'normal',		enabled: true},
-	'gossip':		{minPos: 'POS_DEAD',	minLevel: 0,	logLevel: 'normal',		enabled: true},
-	'shutdown':		{minPos: 'POS_DEAD',	minLevel: 100,	logLevel: 'always',		enabled: true},
-	'reboot':		{minPos: 'POS_DEAD',	minLevel: 100,	logLevel: 'always',		enabled: true},
+	'say':			{minPos: 'resting',	minLevel: 0,	logLevel: 'normal',		enabled: true},
+	'tell':			{minPos: 'resting',	minLevel: 0,	logLevel: 'normal',		enabled: true},
+	'gossip':		{minPos: 'dead',	minLevel: 0,	logLevel: 'normal',		enabled: true},
+	'shutdown':		{minPos: 'dead',	minLevel: 100,	logLevel: 'always',		enabled: true},
+	'reboot':		{minPos: 'dead',	minLevel: 100,	logLevel: 'always',		enabled: true},
 };
 
 const loadCommandTable = () =>
@@ -117,7 +120,7 @@ const execute = (mud, ch, command, args) =>
 		}
 
 		if (ch.level < cmd.minLevel) return reject('Unknown command. Consult the help pages or type "commands" for a list of available commands.');
-		if (ch.position < cmd.minPosition) return reject('You can\'t do that in your current position.');
+		if (ch.position.lt(cmd.minPosition)) return reject('You can\'t do that in your current position.');
 
 		// do a better job of logging levels like info, debug, and other
 		console.log(`[${cmd.logLevel}] command: ${command} requested by: ${ch.name} min level: ${cmd.minLevel}`);
