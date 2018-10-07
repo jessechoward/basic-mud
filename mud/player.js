@@ -20,15 +20,6 @@ class Player extends EventEmitter// extends Character
 	{
 		if (!this.connected) return;
 
-		/* try
-		{
-			const cmd = JSON.parse(data);
-			this.emit(cmd, this);
-		}
-		catch (error)
-		{
-			console.log('Error parsing command form JSON: ', error);
-		} */
 		this.writeToCharacter(`Received: ${data}`);
 		try
 		{

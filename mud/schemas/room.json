@@ -1,0 +1,17 @@
+{
+	"$id": "room",
+	"type": "object",
+	"properties":
+	{
+		"id": {"$ref": "#/definitions/uidString"},
+		"name": {"$ref": "#/definitions/shortDesc"},
+		"description": {"$ref": "#/definitions/descString"},
+		"extraDescriptions":
+		{
+			"type": "array",
+			"items": {"$ref": "#/definitions/extraDesc"},
+			"uniqueItems": true
+		},
+		"flags": {"$ref": "#/definitions/flagValue"}
+	}
+}
