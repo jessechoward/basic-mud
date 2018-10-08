@@ -1,0 +1,27 @@
+- var areaFlags = ['no_npc', 'closed', 'admin_only'];
+
+#editor-header.container-fluid.text-center
+	h1 Area Editor
+#editor-form.container
+	form
+		.form-group
+			label(for='id') ID:
+			input.form-control(type='text' placeholder='0000abcd11112222333301234567890ab' name='id')
+		.form-group
+			label(for='areaName') Name:
+			input.form-control(type='text' placeholder='Area Name' name='areaName')
+		.form-group
+			label(for='author') Author:
+			input.form-control(type='text' placeholder='Author' name='author')
+		.form-group
+			label(for='levels') Levels:
+			input.form-control(type='number' placeholder='Min Level' name='minLevel' value=0)
+			input.form-control(type='number' placeholder='Max Level' name='maxLevel' value=100)
+		.container
+			h3 Area Flags:
+			each flag in areaFlags
+				.checkbox
+					label.checkbox
+						input(type='checkbox', name=flag)
+						a #{flag}
+

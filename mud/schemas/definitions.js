@@ -10,7 +10,7 @@ module.exports =
 		'type': 'string',
 		'format': 'email'
 	},
-	'nameString':
+	'playerName':
 	{
 		'type': 'string',
 		'pattern': '^[A-Z][a-z]+$',
@@ -64,7 +64,8 @@ module.exports =
 	'shortDesc':
 	{
 		'type': 'string',
-		'pattern': '^[A-Za-z]+(?: [A-Za-z0-9]+)*$'
+		'pattern': '^[A-Za-z]+(?: [A-Za-z0-9]+)*$',
+		'maxLength': 32
 	},
 	'extraDesc':
 	{
