@@ -60,7 +60,6 @@ class Mud extends EventEmitter
 		.then(() =>
 		{
 			// successful command
-			
 		})
 		.catch((message) =>
 		{

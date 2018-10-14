@@ -1,0 +1,16 @@
+- var exitFlags = ['door', 'closed'];
+- var directions = ['north', 'east', 'south', 'west', 'up', 'down'];
+
+each direction in directions
+	button.btn.btn-primary(type="button" data-toggle="collapse" data-target="#"+direction) #{direction}
+	.container.collapse(id=direction)
+		.form-group
+			label To Room:
+			input.form-control(type="text" placeholder= "area:room" name="to-room")
+		.form-group
+			label Exit Flags:
+				each flag in exitFlags
+					.checkbox
+						label.checkbox
+							input(type='checkbox', name=flag)
+							a #{flag}

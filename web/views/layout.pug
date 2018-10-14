@@ -21,18 +21,23 @@ html.no-js(lang="")
 				.navbar-header
 					a.navbar-brand(href="#") #{appName}
 				ul#main-navbar.nav.navbar-nav
-					li.active
+					li.nav-item.active
 						a(data-toggle="tab" href="#home") Home
-					li
+					li.nav-item
 						a(data-toggle="tab" href="#login") Login
-					li
+					li.nav-item
 						a(data-toggle="tab" href="#register") Register
-					li
+					li.nav-item
 						a(data-toggle="tab" href="#console") Console
-					li
+					li.nav-item
 						a(data-toggle="tab" href="#player") Player
-					li
-						a(data-toggle="tab" href="#editor") Editor
+					li.nav-item.dropdown
+						a.dropdown-toggle(data-toggle="dropdown" href="#") Editors
+						ul.dropdown-menu
+							li
+								a.dropdown-item(data-toggle="tab" href="#area-editor") Area Editor
+							li
+								a.dropdown-item(data-toggle="tab" href="#room-editor") Room Editor
 
 		#content-wrapper.container-fluid
 			.tab-content
@@ -46,7 +51,9 @@ html.no-js(lang="")
 					include console.pug
 				#player.tab-pane.fade
 					p player content
-				#editor.tab-pane.fade
+				#area-editor.tab-pane.fade
 					include editors/area.pug
+				#room-editor.tab-pane.fade
+					include editors/room.pug
 
 		script(src="/static/js/main.js" type="module")

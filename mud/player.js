@@ -5,7 +5,7 @@ class Player extends EventEmitter// extends Character
 {
 	constructor(data, ws)
 	{
-		// super(data);
+		super();
 		ws.on('message', this.pushCommand.bind(this));
 		ws.on('error', this.errorHandler.bind(this));
 		ws.on('close', this.closeHandler.bind(this));
@@ -25,7 +25,7 @@ class Player extends EventEmitter// extends Character
 		{
 			this.emit('command', this, JSON.parse(data));
 		}
-		catch(error)
+		catch (error)
 		{
 			console.log('[ERROR] received non-JSON string from player: ', this.name);
 		}

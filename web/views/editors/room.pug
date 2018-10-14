@@ -1,0 +1,27 @@
+- var roomFlags = ['no_npc', 'dark', 'safe', 'private', 'no_magic'];
+
+#editor-header.container-fluid.text-center
+	h1 Room Editor
+#editor-form.container
+	form
+		.form-group
+			label(for='id') ID:
+			input.form-control(type='text' placeholder='0000abcd11112222333301234567890ab' name='id')
+		.form-group
+			label(for='roomName') Name:
+			input.form-control(type='text' placeholder='Room Name' name='roomName')
+		.form-group
+			label(for='shortDesc') Short Description:
+			input.form-control(type='text' placeholder='short description' name='shortDesc')
+		.form-group
+			label(for='roomDescription') Description:
+			textarea.form-control(id='roomDescription' rows=8)
+		.form-group
+			label Room Flags:
+				each flag in roomFlags
+					.checkbox
+						label.checkbox
+							input(type='checkbox', name=flag)
+							a #{flag}
+		include ./exits.pug
+		.btn.btn-primary(type="button" value="save") Save

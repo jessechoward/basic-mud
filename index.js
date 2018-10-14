@@ -8,7 +8,7 @@ const app = express();
 // parse request bodies into objects so we can work with them
 // like civilized humanoids
 app.use(express.json()); // json body
-app.use(express.urlencoded({extended: true})); //url encoded body
+app.use(express.urlencoded({extended: true})); // url encoded body
 
 // views are used to present the web interface
 // along with user specific details

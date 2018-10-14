@@ -14,14 +14,16 @@
 			label(for='author') Author:
 			input.form-control(type='text' placeholder='Author' name='author')
 		.form-group
-			label(for='levels') Levels:
-			input.form-control(type='number' placeholder='Min Level' name='minLevel' value=0)
-			input.form-control(type='number' placeholder='Max Level' name='maxLevel' value=100)
-		.container
-			h3 Area Flags:
-			each flag in areaFlags
-				.checkbox
-					label.checkbox
-						input(type='checkbox', name=flag)
-						a #{flag}
-
+			label Suggested Levels:
+				label(for='minLevel') Min Level:
+					input.form-control(type='number' placeholder='Min Level' name='minLevel' value=0)
+				label(for='maxLevel') Max Level:
+					input.form-control(type='number' placeholder='Max Level' name='maxLevel' value=100)
+		.form-group
+			label Area Flags:
+				each flag in areaFlags
+					.checkbox
+						label.checkbox
+							input(type='checkbox', name=flag)
+							a #{flag}
+		.btn.btn-primary(type="button" value="save") Save
